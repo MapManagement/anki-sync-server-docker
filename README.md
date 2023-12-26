@@ -9,7 +9,8 @@ However, when this repository was created, there wasn't any official Docker imag
 server which encouraged me to publish my own. It is based on the Rust sync server. The official 
 documentation can be found [here](https://docs.ankiweb.net/sync-server.html).
 
-I highly recommend using a reverse proxy to ensure a secure connection.
+I highly recommend using a reverse proxy to ensure a secure connection. You can start off with
+my compose configuration.
 
 ## Environment Variables
 

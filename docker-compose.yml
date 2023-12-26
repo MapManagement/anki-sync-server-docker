@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  anki-sync-server:
+    image: anki
+    container_name: Anki-Sync-Server
+    environment:
+      SYNC_USER1: anki:ikna
+      SYNC_BASE: /data
+      SYNC_HOST: 0.0.0.0
+      SYNC_PORT: 8080
+    volumes:
+      - ./data:/data
+    restart: unless-stopped
