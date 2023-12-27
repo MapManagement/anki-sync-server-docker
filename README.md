@@ -16,7 +16,7 @@ my compose configuration.
 
 |  Variable  |  Default  |          Purpose         |
 |:----------:|:---------:|:------------------------:|
-| SYNC_USER1 | anki:akni |   Default Anki account   |
+| SYNC_USER1 | anki:ikna |   Default Anki account   |
 | SYNC_USERX |     -     | Additional Anki accounts |
 |  SYNC_BASE |   /data   |  Data storage directory  |
 |  SYNC_HOST |  0.0.0.0  |       Host binding       |
