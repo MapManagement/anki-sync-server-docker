@@ -1,13 +1,17 @@
 # Anki-Sync-Server-Docker
 
-Since Anki 2.1.57+ the syn server is no more a dedicated service maintained by the
+Since Anki 2.1.57+ the sync server is no more a dedicated service maintained by the
 Anki community on GitHub but built into the Anki core services. Both, the Python and the Rust
 implementation of the previous sync server, are no longer maintained and therefore don't support
-newer versions of the Anki client.
+newer versions of the Anki client.  The official  documentation can be found
+[here](https://docs.ankiweb.net/sync-server.html).
 
 However, when this repository was created, there wasn't any official Docker image for the new sync
-server which encouraged me to publish my own. It is based on the Rust sync server. The official 
-documentation can be found [here](https://docs.ankiweb.net/sync-server.html).
+server which encouraged me to publish my own. Anki offers a Python and a Rust implementation but
+since Rust compiling for ARM images takes a fews hours, I only support a
+[prebuilt Python image](https://github.com/MapManagement/anki-sync-server-docker/pkgs/container/anki-sync-server-docker) 
+at the moment. When desired, you can also use the ``Rust.Dockerfile`` which needs to be compiled
+manually.
 
 I highly recommend using a reverse proxy to ensure a secure connection. You can start off with
 my compose configuration.
