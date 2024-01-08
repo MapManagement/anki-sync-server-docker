@@ -1,0 +1,48 @@
+# Thanks to: 
+# https://stackoverflow.com/questions/58465057/trigger-a-github-action-when-another-repository-creates-a-new-release
+
+name: Check for new Anki release
+
+on:
+  schedule:
+    # triggered at 12:00 every day
+    - cron: 0 12 * * *
+  workflow-dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Download release version of last run
+        id: download_last_release_version
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          name: anki-release-version
+          workflow_conclusion: success
+          workflow: check-anki-release.yml
+          if_no_artifact_found: warn
+
+      - name: Retrieve latest release version
+        id: retrieve_latest_release_version
+        run: |
+          LATEST_RELEASE_VERSION=$(curl -s https://api.github.com/repos/ankitects/anki/releases/latest | jq -r '.tag_name')
+          echo "latest_release_version=$LATEST_RELEASE_VERSION" >> $GITHUB_OUTPUT
+
+      - name: Compare with last release version
+        id: compare_release_version
+        run: |
+          LAST_RELEASE_VERSION=$(cat anki-release-version 2> /dev/null || echo "NOT FOUND")
+
+          if [ "${{ steps.retrieve_latest_release_version.outputs.LATEST_RELEASE_VERSION }}" != "$LAST_RELEASE_VERSION" ]; then
+            echo "release_version_changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "release_version_changed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Trigger build and publish workflow
+        if: steps.compare_release.outputs.release_version_changed == 'true'
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: build-and-publish-image.yml
