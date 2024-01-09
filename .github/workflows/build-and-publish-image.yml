@@ -35,17 +35,6 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Get metadata
-        id: meta
-        uses: docker/metadata-action@v4
-        tags: |
-          type=semver,pattern={{raw}},value=${{  }}
-          type=ref,event=branch
-          type=ref,event=pr
-          type=sha
-        with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-
       - name: Retrieve latest release version
         id: retrieve_latest_release_version
         run: |
