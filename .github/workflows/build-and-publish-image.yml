@@ -44,10 +44,11 @@ jobs:
       - name: Get metadata
         id: meta
         uses: docker/metadata-action@v4
-        tags: |
-          type=semver,pattern={{raw}},value=${{ $LATEST_RELEASE_VERSION }}
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=semver,pattern={{raw}},value=${{ $LATEST_RELEASE_VERSION }}
+
 
       - name: Build and push image
         uses: docker/build-push-action@v3
