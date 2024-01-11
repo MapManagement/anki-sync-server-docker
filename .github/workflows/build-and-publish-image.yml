@@ -49,6 +49,7 @@ jobs:
           tags: |
             type=semver,pattern={{raw}},value=${{ steps.retrieve_latest_release_version.outputs.LATEST_RELEASE_VERSION }}
             type=raw,value=python
+            type=sha,enable=false
 
 
       - name: Build and push image
