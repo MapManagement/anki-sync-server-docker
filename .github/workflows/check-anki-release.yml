@@ -21,7 +21,7 @@ jobs:
         with:
           name: anki-release-version
           workflow_conclusion: success
-          workflow: build-an-publish-image.yml
+          workflow: build-and-publish-image.yml
           if_no_artifact_found: warn
 
       - name: Retrieve latest release version
