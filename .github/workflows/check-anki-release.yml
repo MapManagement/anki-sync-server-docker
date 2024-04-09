@@ -17,7 +17,7 @@ jobs:
 
       - name: Download release version of last run
         id: download_last_release_version
-        uses: dawidd6/action-download-artifact@v2
+        uses: dawidd6/action-download-artifact@v3
         with:
           name: anki-release-version
           workflow_conclusion: success
@@ -34,6 +34,8 @@ jobs:
         id: compare_release_version
         run: |
           LAST_RELEASE_VERSION=$(cat anki-release-version 2> /dev/null || echo "NOT FOUND")
+          echo "Latest: ${{ steps.retrieve_latest_release_version.outputs.LATEST_RELEASE_VERSION }}"
+          echo "Last: $LAST_RELEASE_VERSION"
 
           if [ "${{ steps.retrieve_latest_release_version.outputs.LATEST_RELEASE_VERSION }}" != "$LAST_RELEASE_VERSION" ]; then
             echo "release_version_changed=true" >> $GITHUB_OUTPUT
