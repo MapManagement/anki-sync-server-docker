@@ -48,7 +48,7 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
             type=raw,value=${{ steps.retrieve_latest_release_version.outputs.LATEST_RELEASE_VERSION }}
-            type=raw,value=python
+            type=raw,value=latest
             type=sha,enable=false
 
 
