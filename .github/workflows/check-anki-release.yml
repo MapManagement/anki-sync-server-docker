@@ -44,7 +44,7 @@ jobs:
           fi
 
       - name: Trigger build and publish workflow
-        if: steps.compare_release.outputs.release_version_changed == 'true'
+        if: steps.compare_release_version.outputs.release_version_changed == 'true'
         uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: build-and-publish-image.yml
