@@ -16,6 +16,13 @@ manually.
 I highly recommend using a reverse proxy to ensure a secure connection. You can start off with
 my compose configuration.
 
+## Docker Images
+
+Whenever the [official Anki repository](https://github.com/ankitects/anki) creates a new release,
+a GitHub action workflow will be triggered shortly after which builds a new Docker image based on
+the published release. All images are stored on the GitHub registry and therefore older releases
+are not lost and can still be downloaded.
+
 ## Environment Variables
 
 |  Variable  |  Default  |          Purpose         |
