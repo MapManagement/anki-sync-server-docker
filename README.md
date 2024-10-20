@@ -25,13 +25,19 @@ are not lost and can still be downloaded.
 
 ## Environment Variables
 
-|  Variable  |  Default  |          Purpose         |
-|:----------:|:---------:|:------------------------:|
-| SYNC_USER1 | anki:ikna |   Default Anki account   |
-| SYNC_USERX |     -     | Additional Anki accounts |
-|  SYNC_BASE |   /data   |  Data storage directory  |
-|  SYNC_HOST |  0.0.0.0  |       Host binding       |
-|  SYNC_PORT |    8080   |       Port binding       |
+|  Variable        |  Default  |          Purpose         |
+|:----------------:|:---------:|:------------------------:|
+| SYNC_USER1       | anki:ikna |   Default Anki account   |
+| SYNC_USERX       |     -     | Additional Anki accounts |
+|  SYNC_BASE       |   /data   |  Data storage directory  |
+|  SYNC_HOST       |  0.0.0.0  |       Host binding       |
+|  SYNC_PORT       |    8080   |       Port binding       |
+| PASSWORDS_HASHED |    0      | Enable hashed passwords  |
+
+There is also the possibility to pass hashed instead of plain text passwords. To do so, you have to
+set ``PASSWORDS_HASHED`` to ``1``. Anki recommends a tool like
+[this one](https://git.sr.ht/~laalsaas/pbkdf2-password-hash) to generate pbkdf2 hashes but feel free
+to use whichever tool you like the most. Keep in mind that you have to use PHC string format.
 
 ## Volumes
 
