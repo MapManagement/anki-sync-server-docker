@@ -17,7 +17,7 @@ jobs:
 
       - name: Download release version of last run
         id: download_last_release_version
-        uses: dawidd6/action-download-artifact@v3
+        uses: dawidd6/action-download-artifact@v6
         with:
           name: anki-release-version
           workflow_conclusion: success
