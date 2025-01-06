@@ -1,4 +1,4 @@
-FROM python:3.11.6-bookworm
+FROM python:3.13-bookworm
 
 ARG ANKI_VERSION="23.12"
 
